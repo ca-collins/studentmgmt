@@ -1,6 +1,6 @@
 # Installation
 
-1. Requires [Leiningen](https://leiningen.org/), JavaSDK, and PostgreSQL
+1. Requires [Leiningen](https://leiningen.org/), [JavaSDK](http://openjdk.java.net/), and [PostgreSQL](https://www.postgresql.org/download/)
 
 2. Create new PostgreSQL database called *students*: `CREATE DATABASE students`
 
@@ -11,10 +11,10 @@
 
 
 5. Endpoint is hardcoded to <http://localhost:8000/students>
-  - You can adjust the port in the `-main` function in `src\studentmgmt\core` (If you do, you will have to make an equivalent change on the frontend. See [Profezzerk](https://github.com/ca-collins/profezzerk) README for more.)
+  - You can adjust the port in the `-main` function in `dev\studentmgmt\dev.clj` (If you do, you will have to make an equivalent change on the frontend. See [Profezzerk](https://github.com/ca-collins/profezzerk) README for more.)
 
 
-6. Install and run the frontend application: [Profezzerk](https://github.com/ca-collins/profezzerk)
+6. Install and run the frontend application. (See [Profezzerk README instructions](https://github.com/ca-collins/profezzerk))
 
 --------------------------------------------------------------------------------
 
