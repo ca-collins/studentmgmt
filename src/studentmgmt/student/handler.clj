@@ -8,7 +8,6 @@
 (defn handle-index-students [req]
   (let [db (:students/db req)
         students (vec (read-students db))]
-    (prn "READ REQ" req)
     {:status 200
      :headers {"Content-Type"                 "text/json"
                "Access-Control-Allow-Origin"  "*"}
@@ -19,7 +18,6 @@
         description (get-in req [:params "description"])
         db (:students/db req)
         student-id (create-student db name description)]
-    (prn "CREATE REQ" req)
     {:status 302
      :headers {"Access-Control-Allow-Origin"  "*"}
      :body ""}))
@@ -28,7 +26,6 @@
   (let [db (:students/db req)
         student-id (java.util.UUID/fromString (:id (:route-params req)))
         exists? (delete-student db student-id)]
-    (prn "DELETE REQ" req)
     (if exists?
       {:status 302
        :headers {"Access-Control-Allow-Origin"  "*"}
@@ -43,7 +40,6 @@
         name (get-in req [:params "name"])
         description (get-in req [:params "description"])
         exists? (update-student db student-id name description)]
-    (prn "UPDATE REQ" req)
     (if exists?
       {:status 302
        :headers {"Access-Control-Allow-Origin"  "*"}
