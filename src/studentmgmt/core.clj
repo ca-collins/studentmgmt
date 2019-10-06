@@ -26,21 +26,10 @@
   (fn [req]
     (hdlr (assoc req :students/db db))))
 
-; (def sim-methods {"PUT" :put
-;                   "DELETE" :delete})
-;
-; (defn wrap-simulated-methods [hdlr]
-;   (fn [req]
-;     (if-let [method (and (= :post (:request-method req))
-;                          (sim-methods (get-in req [:params "_method"])))]
-;       (hdlr (assoc req :request-method method))
-;       (hdlr req))))
-
 (def app
   (-> routes
       (wrap-params)
       (wrap-db)))
-      ;(wrap-simulated-methods)))
 
 (defn -main [port]
   (students/create-table db)
