@@ -18,7 +18,7 @@
         description (get-in req [:params "description"])
         db (:students/db req)
         student-id (create-student db name description)]
-    {:status 302
+    {:status 200
      :headers {"Access-Control-Allow-Origin"  "*"}
      :body ""}))
 
@@ -27,7 +27,7 @@
         student-id (java.util.UUID/fromString (:id (:route-params req)))
         exists? (delete-student db student-id)]
     (if exists?
-      {:status 302
+      {:status 200
        :headers {"Access-Control-Allow-Origin"  "*"}
        :body ""}
       {:status 404
@@ -41,10 +41,9 @@
         description (get-in req [:params "description"])
         exists? (update-student db student-id name description)]
     (if exists?
-      {:status 302
+      {:status 200
        :headers {"Access-Control-Allow-Origin"  "*"}
        :body ""}
       {:status 404
        :body "student not found."
        :headers {"Access-Control-Allow-Origin"  "*"}})))
-;       :headers {"Location" "/students"}
